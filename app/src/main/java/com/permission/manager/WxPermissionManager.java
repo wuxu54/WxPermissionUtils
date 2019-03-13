@@ -104,6 +104,10 @@ public class WxPermissionManager {
       } else {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
           activity.requestPermissions(unGrantedPermission, requestCode);
+        }else {
+          if (wxResultListener != null) {
+            wxResultListener.onResult(requestCode, true, allPermissions);
+          }
         }
       }
     }
